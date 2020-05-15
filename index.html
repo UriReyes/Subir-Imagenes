@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subir Imagenes</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css"
+    />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <a class="navbar-brand" href="#">Subir Imagenes con JS y PHP</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarColor01"
+        aria-controls="navbarColor01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a id="lanzarModal" class="nav-link" href="#">
+              Administrar Imagenes <span class="sr-only">(current)</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <h2 class="small">Subir Imagen <i class="fas fa-upload"></i></h2>
+          <form id="formulario">
+            <div class="form-group">
+              <label for="imagen"></label>
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    name="imagen"
+                    id="imagen"
+                    aria-describedby="inputGroupFileAddon03"
+                  />
+                  <label class="custom-file-label" for="inputGroupFile03"
+                    >Elige un archivo</label
+                  >
+                </div>
+              </div>
+            </div>
+            <input
+              id="subirImagen"
+              type="submit"
+              value="Subir Imagen"
+              class="btn btn-primary mb-2"
+            />
+          </form>
+          <div id="mensajes"></div>
+          <div id="spinner" class="mt-5">
+            <h4 class="small">Visualizando...</h4>
+            <div class="sk-circle">
+              <div class="sk-circle1 sk-child"></div>
+              <div class="sk-circle2 sk-child"></div>
+              <div class="sk-circle3 sk-child"></div>
+              <div class="sk-circle4 sk-child"></div>
+              <div class="sk-circle5 sk-child"></div>
+              <div class="sk-circle6 sk-child"></div>
+              <div class="sk-circle7 sk-child"></div>
+              <div class="sk-circle8 sk-child"></div>
+              <div class="sk-circle9 sk-child"></div>
+              <div class="sk-circle10 sk-child"></div>
+              <div class="sk-circle11 sk-child"></div>
+              <div class="sk-circle12 sk-child"></div>
+            </div>
+          </div>
+          <div id="previsualizar" class="text-center"></div>
+        </div>
+        <div class="col-sm">
+          <h2 class="small">Galeria <i class="far fa-images"></i></h2>
+          <div
+            id="carouselImagenes"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <ol id="siguiente" class="carousel-indicators"></ol>
+            <div id="contenedorImagenes" class="carousel-inner"></div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselImagenes"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselImagenes"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="administrarModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="administrarModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="administrarModalLabel">
+              Administrar Imagenes
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table
+              id="table_id"
+              class="table table-sm text-center compact"
+              style="width: 100%;"
+            >
+              <thead class="thead-dark">
+                <tr>
+                  <th>No.</th>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+            </table>
+            <div id="mensajesModal"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-dark mt-5 text-white">
+      <div>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="bg-light">
+            <!-- <img
+              src="img/romance.png"
+              alt="Tu y yo"
+              width="350px"
+              height="350px"
+            /> -->
+          </div>
+          <div class="container sobreNosotros p-5">
+            <h5 class="text-white">Sobre Mi</h5>
+            <p class="small">
+              Programador: Uriel Reyes &copy
+            </p>
+            <p>
+              Me gusta aprender y poner en práctica todos mis conocimientos, es
+              realmente agradable programar :)
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/cf312f9d89.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"
+    ></script>
+    <script src="js/appModulos.js " type="module"></script>
+  </body>
+</html>
