@@ -14,9 +14,10 @@ Utilizar en un servidor para PHP
 
 ## Construido con 🛠️
 
-* [Bootswatch](https://bootswatch.com/) - El framework web usado
 * [JavaScript]
 * [PHP 7.3.12]
+* [Bootswatch](https://bootswatch.com/)
+* [DataTables](https://datatables.net/)
 
 ## Autor ✒️
 
