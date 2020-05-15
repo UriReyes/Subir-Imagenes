@@ -1,6 +1,4 @@
-# Título del Proyecto
-
-Ejemplo de cómo subir imagenes con PHP y JavaScript
+# Subir Imágenes con PHP y JavaScript
 
 ### Pre-requisitos 📋
 
